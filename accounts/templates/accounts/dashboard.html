@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Welcome, {{ account.first_name }} {{ account.last_name }}</h2>
+    <p>Account Balance: R{{ account.balance }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <h3>Deposit</h3>
+        <input type="number" name="deposit" step="0.01" min="0" placeholder="Deposit Amount" required>
+        <button type="submit">Deposit</button>
+
+        <h3>Withdraw</h3>
+        <input type="number" name="withdraw" step="0.01" min="0" placeholder="Withdraw Amount" required>
+        <button type="submit">Withdraw</button>
+
+        <h3>Transfer</h3>
+        <input type="number" name="transfer_to" placeholder="Transfer To Account Number" required>
+        <input type="number" name="transfer_amount" step="0.01" min="0" placeholder="Transfer Amount" required>
+        <button type="submit">Transfer</button>
+    </form>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
